@@ -113,15 +113,20 @@ public class CNA_Analysis {
 		
 		/*		Plot my biomqrker regions		*/
 		ArrayList<Region> regions = new ArrayList<Region>(10);
-		Region reg_1_1 = new Region("chr1",25887939,25888118); 
-		Region reg_1_2 = new Region("chr1",122830400,122830599);
-//		Region reg_18_3 = new Region("chr18",16431000, 16431150);
-//		Region reg_16_1 = new Region("chr16",35326492, 35326765);
+		Region reg_12_2 = new Region("chr12",97430942,97431147); 
+		Region reg_12_1 = new Region("chr12",27222463,27222820);
+		Region reg_8_1 = new Region("chr8",2218482,2218741);
+		Region reg_3_1 = new Region("chr3",198015839,198015966);
+		Region reg_2_1 = new Region("chr2",86884426,86884805);
+		Region reg_14_1 = new Region("chr14",22801708,22802172);
 		
 //		regions.add(reg_16_1);
-		regions.add(reg_1_1);
-		regions.add(reg_1_2);
-//		regions.add(reg_18_3);
+		regions.add(reg_12_2);
+		regions.add(reg_12_1);
+		regions.add(reg_8_1);
+		regions.add(reg_3_1);
+		regions.add(reg_2_1);
+		regions.add(reg_14_1);
 		
 //		coverageAnalysis.plotAll(regions, cases);
 //		coverageAnalysis.plotAll(regions, healthy, "healthy");
