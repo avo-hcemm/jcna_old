@@ -1,0 +1,14 @@
+#folders
+.DS_Store
+.classpath
+.project
+.settings/
+classes/
+covid/
+healthy/
+lib/
+master/
+plots/
+rmsk/
+src/
+
