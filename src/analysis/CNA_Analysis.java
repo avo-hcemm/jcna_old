@@ -113,20 +113,32 @@ public class CNA_Analysis {
 		
 		/*		Plot my biomqrker regions		*/
 		ArrayList<Region> regions = new ArrayList<Region>(10);
-		Region reg_12_2 = new Region("chr12",97430942,97431147); 
-		Region reg_12_1 = new Region("chr12",27222463,27222820);
-		Region reg_8_1 = new Region("chr8",2218482,2218741);
-		Region reg_3_1 = new Region("chr3",198015839,198015966);
-		Region reg_2_1 = new Region("chr2",86884426,86884805);
-		Region reg_14_1 = new Region("chr14",22801708,22802172);
+//		Region reg_12_2 = new Region("chr12",97430942,97431147); //max600
+//		Region reg_12_1 = new Region("chr12",27222463,27222820);
+//		Region reg_8_1 = new Region("chr8",2218482,2218741);
+//		Region reg_3_1 = new Region("chr3",198015839,198015966);
+//		Region reg_2_1 = new Region("chr2",86884426,86884805);
+//		Region reg_14_1 = new Region("chr14",22801708,22802172);
+		Region reg_x_1 = new Region("chrX",32678185,32678531);//max2000
+		Region reg_3_2 = new Region("chr3",42452376,42452649);
+		Region reg_12_3 = new Region("chr12",47326181,47327280);
+		Region reg_2_2 = new Region("chr2",232799457,232799824);
+		Region reg_2_3 = new Region("chr2",28846734,28847170);
+		Region reg_17_1 = new Region("chr17",35451390,35451973);
 		
 //		regions.add(reg_16_1);
-		regions.add(reg_12_2);
-		regions.add(reg_12_1);
-		regions.add(reg_8_1);
-		regions.add(reg_3_1);
-		regions.add(reg_2_1);
-		regions.add(reg_14_1);
+//		regions.add(reg_12_2);
+//		regions.add(reg_12_1);
+//		regions.add(reg_8_1);
+//		regions.add(reg_3_1);
+//		regions.add(reg_2_1);
+//		regions.add(reg_14_1);
+		regions.add(reg_12_3);
+		regions.add(reg_x_1);
+		regions.add(reg_17_1);
+		regions.add(reg_2_3);
+		regions.add(reg_2_2);
+		regions.add(reg_3_2);
 		
 //		coverageAnalysis.plotAll(regions, cases);
 //		coverageAnalysis.plotAll(regions, healthy, "healthy");
