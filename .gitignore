@@ -9,4 +9,5 @@ lib/
 master/
 plots/
 rmsk/
-
+src/genome/
+classes/genome/
