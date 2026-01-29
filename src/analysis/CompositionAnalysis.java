@@ -172,7 +172,7 @@ public class CompositionAnalysis {
 		}
 
 		double sum = 0.0d;
-		for (int i = 0; i < repeatAbundances.length; i++)
+		for (int i = 0; i < repeatAbundances.length; i++)// rep fam + other repeats + no repeats
 			sum += repeatAbundances[i];
 		for (int i = 0; i < repeatAbundances.length; i++)
 			repeatAbundances[i] /= sum;

@@ -729,15 +729,14 @@ public class CoverageAnalysis {
 	 * @param alignments list of alignments
 	 * @return a JFreeChart of a coverage plot containing the multiple normalized average coverage of the specified region
 	 */
-	public static JFreeChart plotRegion(String chromosome, int start, int stop,String cohort1, ArrayList<Alignment> alignments1, String cohort2,ArrayList<Alignment> alignments2) { // one
-		System.out.println("plotRegion:");																	// based
+	public static JFreeChart plotRegion(String chromosome, int start, int stop,
+			String cohort1, ArrayList<Alignment> alignments1, String cohort2,ArrayList<Alignment> alignments2) { // two 
+		System.out.println("plotRegion:");																	
 		if (start > stop) { // wrong orientation
 			int x = start;
 			start = stop;
 			stop = x;
 		}
-
-		Annotation annotation = new Annotation(chromosome, start - 1, stop - 1); // zero based
 
 		int size = (stop - start + 1);
 		float[][] data1 = new float[alignments1.size()][size];
@@ -764,12 +763,14 @@ public class CoverageAnalysis {
 		seriesCollection.addSeries(series1);
 		seriesCollection.addSeries(series2);
 
-		JFreeChart chart = ChartFactory.createXYLineChart("", "Position (bp)", "Normalized Coverage (1 & 2)", seriesCollection,
+		JFreeChart chart = ChartFactory.createXYLineChart("", "Position (bp)", "Normalized Coverage ", seriesCollection,
 				PlotOrientation.VERTICAL, true, false, false);
 
 		Font font = new Font("Dialog", Font.PLAIN, 52); // 35
 
-		chart.setTitle(new TextTitle((chromosome + ": " + start + " - " + stop)));
+		// Create a larger font for the title
+		Font titleFont = new Font("SansSerif", Font.BOLD, 40); // Adjust size as needed
+		chart.setTitle(new TextTitle(chromosome + ": " + start + " - " + stop,titleFont));
 		// Font("Dialog", Font.BOLD, 38)));
 		chart.getPlot().setBackgroundPaint(Color.white);
 		chart.getPlot().setOutlinePaint(Color.black);
@@ -831,9 +832,10 @@ public class CoverageAnalysis {
 
 		LegendItemCollection legend = new LegendItemCollection();
 
-		legend.add(new LegendItem("normalized coverage 1", Color.BLUE));
-		legend.add(new LegendItem("normalized coverage 2", Color.RED));
+		legend.add(new LegendItem("case", Color.BLUE));
+		legend.add(new LegendItem("control", Color.RED));
 
+		Annotation annotation = new Annotation(chromosome, start - 1, stop - 1); // zero based
 		if (annotation.getRepeats().size() > 0) {
 			y -= offset;
 			XYLineAnnotation repeatLine = new XYLineAnnotation(start, y, stop, y,
@@ -933,8 +935,11 @@ public class CoverageAnalysis {
 	 */
 	public static void plotMultipleCohorts(ArrayList<Region> regions, ArrayList<Alignment> alignments1,String cohort1,ArrayList<Alignment> alignments2,String cohort2) {
 		System.out.println("plotMutipleCohorts:");
+		int left_margin = 200;
+		int right_margin = 200;
 		for (Region r : regions)
-			SVGBuilder.saveSVG(CoverageAnalysis.plotRegion(r.getChromosome(), r.getStart() + 1, r.getStop() + 1, cohort1,alignments1,cohort2,alignments2),r.getName());
+			SVGBuilder.saveSVG(CoverageAnalysis.plotRegion(r.getChromosome(), r.getStart() + left_margin, r.getStop() + right_margin,
+					cohort1,alignments1,cohort2,alignments2),r.getName());
 	}
 
 	/**

@@ -11,3 +11,7 @@ plots/
 rmsk/
 src/genome/
 classes/genome/
+classes/
+src/util/tmp/
+src_tmp
+

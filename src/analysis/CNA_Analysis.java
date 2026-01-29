@@ -44,58 +44,60 @@ public class CNA_Analysis {
 		Scanner sc = new Scanner( System.in );
 
 		// Ask the user
-		System.out.print( "Would you like to analyse all the annotated repeat families? (y/n): \n" );
-		String answer = sc.nextLine();
-		if(answer.equalsIgnoreCase("y"))
-		{
-			repeatFamilies = RepeatMasker.getRepeatFamilies();
-		}
-		else
-		{
-			// store the annotated repeat families in a temporary List
-			tempList = RepeatMasker.getRepeatFamilies();
-			// Ask the user
-			System.out.print( "Type the repeat families one by one on a new line. Type 'stop' at the end: \n" );
-			//  Use the Scanner to read a line of text from the user.
-			String input = sc.nextLine();
-			// add the user input to the repeat families followed by 'stop'
-			while(!input.equalsIgnoreCase("stop"))
-			{
-					//checking that the inserted repeat families from the user input are typed correctly!
-			boolean isExists = tempList.contains(input);
-		        if(isExists)
-		        {
-		            //System.out.println("The family " + input+ " exists in the annnotation database");
-		            //checking that the inserted repeat family has not already been added!
-		            if(repeatFamilies.contains(input))
-		            {
-		            	System.out.println("The family " + input+ " is already added. Please add a new one or type 'stop'");
-		            	input = sc.nextLine();
-		            }
-		            else
-		            {
-						repeatFamilies.add(input);
-						input = sc.nextLine();
-		            }
-		        }
-		        else
-		        {
-		            System.out.println("The family " + input+ " does not exist in the annnotation database. Please, try it again.");
-		            input = sc.nextLine();
-		        }
-					//
-			}
-		}
-		
-		System.out.println("Summary of the repeat families: ");
-		for(String rf : repeatFamilies)
-			System.out.print(rf + "\t ");
-		System.out.println();
+//		System.out.print( "Would you like to analyse all the annotated repeat families? (y/n): \n" );
+//		String answer = sc.nextLine();
+//		if(answer.equalsIgnoreCase("y"))
+//		{
+//			repeatFamilies = RepeatMasker.getRepeatFamilies();
+//		}
+//		else
+//		{
+//			// store the annotated repeat families in a temporary List
+//			tempList = RepeatMasker.getRepeatFamilies();
+//			// Ask the user
+//			System.out.print( "Type the repeat families one by one on a new line. Type 'stop' at the end: \n" );
+//			//  Use the Scanner to read a line of text from the user.
+//			String input = sc.nextLine();
+//			// add the user input to the repeat families followed by 'stop'
+//			while(!input.equalsIgnoreCase("stop"))
+//			{
+//					//checking that the inserted repeat families from the user input are typed correctly!
+//			boolean isExists = tempList.contains(input);
+//		        if(isExists)
+//		        {
+//		            //System.out.println("The family " + input+ " exists in the annnotation database");
+//		            //checking that the inserted repeat family has not already been added!
+//		            if(repeatFamilies.contains(input))
+//		            {
+//		            	System.out.println("The family " + input+ " is already added. Please add a new one or type 'stop'");
+//		            	input = sc.nextLine();
+//		            }
+//		            else
+//		            {
+//						repeatFamilies.add(input);
+//						input = sc.nextLine();
+//		            }
+//		        }
+//		        else
+//		        {
+//		            System.out.println("The family " + input+ " does not exist in the annnotation database. Please, try it again.");
+//		            input = sc.nextLine();
+//		        }
+//					//
+//			}
+//		}
+//		
+//		System.out.println("Summary of the repeat families: ");
+//		for(String rf : repeatFamilies)
+//			System.out.print(rf + "\t ");
+//		System.out.println();
 
 		// __________________________________________________________________________________________________________________________________________________
 		// Define data for analysis
 
 		LinkedHashMap<String, ArrayList<Alignment>> data = new LinkedHashMap<String, ArrayList<Alignment>>();
+		
+		System.out.println("genome length:"+ dataSet.getGenome().getGenomeLength());
 
 		// human
 		ArrayList<Alignment> healthy = dataSet.getAlignmentsFromLabel("healthy");
@@ -119,12 +121,37 @@ public class CNA_Analysis {
 //		Region reg_3_1 = new Region("chr3",198015839,198015966);
 //		Region reg_2_1 = new Region("chr2",86884426,86884805);
 //		Region reg_14_1 = new Region("chr14",22801708,22802172);
-		Region reg_x_1 = new Region("chrX",32678185,32678531);//max2000
-		Region reg_3_2 = new Region("chr3",42452376,42452649);
-		Region reg_12_3 = new Region("chr12",47326181,47327280);
-		Region reg_2_2 = new Region("chr2",232799457,232799824);
-		Region reg_2_3 = new Region("chr2",28846734,28847170);
-		Region reg_17_1 = new Region("chr17",35451390,35451973);
+//		Region reg_x_1 = new Region("chrX",32678185,32678531);//max2000
+//		Region reg_3_2 = new Region("chr3",42452376,42452649);
+//		Region reg_12_3 = new Region("chr12",47326181,47327280);
+//		Region reg_2_2 = new Region("chr2",232799457,232799824);
+////		Region reg_2_3 = new Region("chr2",28846734,28847170);
+//		Region reg_2_3 = new Region("chr2",28847000,28847170);
+////		Region reg_17_1 = new Region("chr17",35451390,35451973);
+//		Region reg_17_1 = new Region("chr17",35451600,35451973);
+		
+//		Region r2_1 = new Region("chr2",240314265, 240314635);//max2000 dup-07.1
+//		Region r2_2 = new Region("chr2",163359373, 163359698);
+//		Region r2_3 = new Region("chr2",231868230, 231868530);
+//		Region r2_4 = new Region("chr2",185462369, 185464335);
+//		Region r21_1 = new Region("chr21",8410350, 8410603);
+//		Region r3_1 = new Region("chr3",57262636, 57262828);
+//		Region r2_ref = new Region("chr2",241516838,241517037);
+//		Region rchr2 = new Region("chr2",127970656,127970924);
+//		Region rchr2_2 = new Region("chr2",159219980,159220399);
+//		Region rchr3_1 = new Region("chr3",27541315,27541619);
+//		Region rchr5 = new Region("chr5",138100253,138100468);
+//		Region chr2_my = new Region("chr2_extend_my","chr2",222866322,222866782);
+		Region chr2_my2 = new Region("chr2_1000_my","chr2",227524187,227525186);
+		Region chr3_my = new Region("chr3_200_my", "chr3",93712621,93712820);
+		Region chr3_ref = new Region("chr3_ref", "chr3",51709652,51709851);
+		Region chr2_ref = new Region("chr2_extend_ref","chr2",161281437,161281636);
+		Region chr22_my = new Region("chr22_extend_my","chr22",21324462,21326326);
+		
+		int[] poschr2 = {127970656,127970924};
+		int[] poschr2_2 = {159219980,159220399};
+		int[] poschr5 = {138100253,138100468};
+		int[] poschr3 = {27541315,27541619};
 		
 //		regions.add(reg_16_1);
 //		regions.add(reg_12_2);
@@ -133,12 +160,26 @@ public class CNA_Analysis {
 //		regions.add(reg_3_1);
 //		regions.add(reg_2_1);
 //		regions.add(reg_14_1);
-		regions.add(reg_12_3);
-		regions.add(reg_x_1);
-		regions.add(reg_17_1);
-		regions.add(reg_2_3);
-		regions.add(reg_2_2);
-		regions.add(reg_3_2);
+//		regions.add(reg_12_3);
+//		regions.add(reg_x_1);
+//		regions.add(reg_17_1);
+//		regions.add(reg_2_3);
+//		regions.add(reg_2_2);
+//		regions.add(reg_3_2);
+//		regions.add(r2_2);
+//		regions.add(r2_1);
+//		regions.add(r2_ref);
+//		regions.add(r2_3);
+//		regions.add(r2_4);
+//		regions.add(r21_1);
+//		regions.add(rchr3_1);
+//		regions.add(rchr2);
+//		regions.add(rchr2_2);
+		regions.add(chr22_my);
+		regions.add(chr2_ref);
+		regions.add(chr2_my2);
+//		regions.add(chr3_my);
+//		regions.add(chr3_ref);
 		
 //		coverageAnalysis.plotAll(regions, cases);
 //		coverageAnalysis.plotAll(regions, healthy, "healthy");
@@ -148,9 +189,9 @@ public class CNA_Analysis {
 		//it calculates the abundance of these repeat regions
 		// the linkdHashMap compositions contains the compositions of all the dogs relatively to the repeat families
 		LinkedHashMap<String, ArrayList<double[]>> compositions = CompositionAnalysis.calculateCompositions(data,repeatFamilies);
-		double[] repeatAbundances = CompositionAnalysis.calculateRepeatAbundances(repeatFamilies, dataSet.getGenome());
+//		double[] repeatAbundances = CompositionAnalysis.calculateRepeatAbundances(repeatFamilies, dataSet.getGenome());
 		
-		ArrayList<double[]> referenceBasedCoverageLevels_covid = CompositionAnalysis.calculateReferenceBasedCoverageLevels(compositions.get("covid"), repeatAbundances, repeatAbundances.length - 1);
+//		ArrayList<double[]> referenceBasedCoverageLevels_covid = CompositionAnalysis.calculateReferenceBasedCoverageLevels(compositions.get("covid"), repeatAbundances, repeatAbundances.length - 1);
 		/*ArrayList<double[]> referenceBasedCoverageLevelsPanc = CompositionAnalysis.calculateReferenceBasedCoverageLevels(compositions.get("pancreatitis"), repeatAbundances, repeatAbundances.length - 1);*/
 
 		// __________________________________________________________________________________________________________________________________________________
@@ -166,17 +207,17 @@ public class CNA_Analysis {
 
 		//compositions of repeat families
 		//it loads the data for healthy and disease group separately
-		saveData(compositions.get("covid"), repeatFamilies, finalPathName,"Compositions_disease-severe");
+//		saveData(compositions.get("covid"), repeatFamilies, finalPathName,"Compositions_disease-severe");
 		/*saveData(compositions.get("pancreatitis"), repeatFamilies, "Compositions_canPanc");*/
 		
 		//repeat abundances
 		//the genomic abundance of the repeat families
-		saveData(repeatAbundances, repeatFamilies, finalPathName, "RepeatAbundancesHumans");
+//		saveData(repeatAbundances, repeatFamilies, finalPathName, "RepeatAbundancesHumans");
 /*		saveData(repeatAbundances, repeatFamilies, "RepeatAbundancesDogs");*/
 		
 		//reference based coverages
 		// the relative abundance of the cfDNA samples relatively to the genomic reference for the repeat families
-		saveData(referenceBasedCoverageLevels_covid, repeatFamilies, finalPathName, "ReferenceBasedCoverageLevels_covid");
+//		saveData(referenceBasedCoverageLevels_covid, repeatFamilies, finalPathName, "ReferenceBasedCoverageLevels_covid");
 /*		saveData(referenceBasedCoverageLevelsPanc, repeatFamilies, "ReferenceBasedCoverageLevels_canpPanc");*/
 
 	}

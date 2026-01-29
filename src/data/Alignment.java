@@ -202,6 +202,10 @@ public class Alignment {
 			for (ReadPair rp : readPairs.get(chromosome).values())
 				fragmentsLength += rp.getLength();
 
+		// the normalized coverage is obtained by dividing the absolute coverage by the proportion of sample coverage
+		double sampleCoverage_prop = fragmentsLength / genomeLength;
+		System.out.println("sample ID: "+this.alignmentID+" - norm:"+ sampleCoverage_prop);
+		
 		for (String chromosome : this.genome.getChromosomeNames()) {
 			int[] absoluteCoverage = new int[this.genome.getChromosomeSize(chromosome)];
 			float[] normalizedCoverage = new float[this.genome.getChromosomeSize(chromosome)];
@@ -225,8 +229,6 @@ public class Alignment {
 				}
 			}
 
-			// the normalized coverage is obtained by dividing the absolute coverage by the proportion of sample coverage
-			double sampleCoverage_prop = fragmentsLength / genomeLength;
 			for (int i = 0; i < normalizedCoverage.length; i++)
 				normalizedCoverage[i] = (float) ((double) absoluteCoverage[i] / sampleCoverage_prop);
 			// write fragments file
